@@ -1,22 +1,27 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { addTodos } from "../redux/reducer";
+// import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+// import { addTodos } from "../redux/reducer";
+import { addTodo } from "../redux/actions";
 import { GoPlus } from "react-icons/go";
 import { motion } from "framer-motion";
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     todos: state,
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTodo: (obj) => dispatch(addTodos(obj)),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addTodo: (obj) => dispatch(addTodos(obj)),
+//   };
+// };
 
-const Todos = (props) => {
+const Todos = () => {
+
+const dispatch = useDispatch();
+
   const [todo, setTodo] = useState("");
 
   const handleChange = (e) => {
@@ -27,11 +32,11 @@ const Todos = (props) => {
     if (todo === "") {
       alert("Input is Empty");
     } else {
-      props.addTodo({
+      dispatch(addTodo({
         id: Math.floor(Math.random() * 1000),
         item: todo,
         completed: false,
-      });
+      }));
       setTodo("");
     }
   };
@@ -58,4 +63,5 @@ const Todos = (props) => {
   );
 };
 //we can use connect method to connect this component with redux store
-export default connect(mapStateToProps, mapDispatchToProps)(Todos);
+// export default connect(mapStateToProps, mapDispatchToProps)(Todos);
+export default Todos;

@@ -2,11 +2,15 @@ import { motion } from "framer-motion";
 import React, { useRef } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { IoCheckmarkDoneSharp, IoClose } from "react-icons/io5";
+import { deleteTodo, updateTodo, completeTodo } from "../redux/actions";
+import { useDispatch } from 'react-redux';
+
 
 const TodoItem = (props) => {
-  const { item, updateTodo, removeTodo, completeTodo } = props;
-
-  const inputRef = useRef(true);
+  const dispatch = useDispatch();
+  // const { item, updateTodo, removeTodo, completeTodo } = props;
+  const { item } = props;
+  const inputRef = useRef(true); //Lee y captura el nuevo estado.
 
   const changeFocus = () => {
     inputRef.current.disabled = false;
@@ -15,11 +19,13 @@ const TodoItem = (props) => {
 
   const update = (id, value, e) => {
     if (e.which === 13) {
-      //here 13 is key code for enter key
-      updateTodo({ id, item: value });
+      //here 13 is key code for enter key. CLAVEEEE
+      dispatch(updateTodo({ id, item: value }));
       inputRef.current.disabled = true;
     }
+    // console.log('item', item.value);
   };
+  // console.log(ref)
   return (
     <motion.li
       initial={{ x: "150vw", transition: { type: "spring", duration: 2 } }}
@@ -38,8 +44,8 @@ const TodoItem = (props) => {
       className="card"
     >
       <textarea
-        ref={inputRef}
-        disabled={inputRef}
+        ref={inputRef} //Lee el valor que introduzca el usuario en ese campo.
+        disabled={inputRef} //Ver que hace
         defaultValue={item.item}
         onKeyPress={(e) => update(item.id, inputRef.current.value, e)}
       />
@@ -57,7 +63,7 @@ const TodoItem = (props) => {
             whileHover={{ scale: 1.4 }}
             whileTap={{ scale: 0.9 }}
             style={{ color: "green" }}
-            onClick={() => completeTodo(item.id)}
+            onClick={() => dispatch(completeTodo(item.id))}
           >
             <IoCheckmarkDoneSharp />
           </motion.button>
@@ -66,7 +72,7 @@ const TodoItem = (props) => {
           whileHover={{ scale: 1.4 }}
           whileTap={{ scale: 0.9 }}
           style={{ color: "red" }}
-          onClick={() => removeTodo(item.id)}
+          onClick={() => dispatch(deleteTodo(item.id))}
         >
           {" "}
           <IoClose />
