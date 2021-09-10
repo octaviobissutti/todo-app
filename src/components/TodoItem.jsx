@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 
 const TodoItem = (props) => {
   const dispatch = useDispatch();
-  // const { item, updateTodo, removeTodo, completeTodo } = props;
   const { item } = props;
   const inputRef = useRef(true); //Lee y captura el nuevo estado.
 
@@ -17,15 +16,14 @@ const TodoItem = (props) => {
     inputRef.current.focus();
   };
 
-  const update = (id, value, e) => {
+  const update = (id, value, e, completed) => {
     if (e.which === 13) {
       //here 13 is key code for enter key. CLAVEEEE
-      dispatch(updateTodo({ id, item: value }));
+      dispatch(updateTodo({ id, item: value, completed }));
       inputRef.current.disabled = true;
     }
-    // console.log('item', item.value);
   };
-  // console.log(ref)
+
   return (
     <motion.li
       initial={{ x: "150vw", transition: { type: "spring", duration: 2 } }}
@@ -47,7 +45,7 @@ const TodoItem = (props) => {
         ref={inputRef} //Lee el valor que introduzca el usuario en ese campo.
         disabled={inputRef} //Ver que hace
         defaultValue={item.item}
-        onKeyPress={(e) => update(item.id, inputRef.current.value, e)}
+        onKeyPress={(e) => update(item.id, inputRef.current.value, e, item.completed)}
       />
       <div className="btns">
         <motion.button

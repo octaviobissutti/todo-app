@@ -1,40 +1,11 @@
 import React, { useState } from "react";
-// import { connect } from "react-redux";
-import { useSelector, useDispatch } from "react-redux";
-// import {
-//   addTodos,
-//   completeTodos,
-//   removeTodos,
-//   updateTodos,
-// } from "../redux/reducer";
-import { addTodo, removeTodo, updateTodo, completeTodo } from "../redux/actions";
+import { useSelector } from "react-redux";
 import TodoItem from "./TodoItem";
 import { AnimatePresence, motion } from "framer-motion";
 
-// const mapStateToProps = (state) => {
-//   return {
-//     todos: state,
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addTodo: (obj) => dispatch(addTodos(obj)),
-//     removeTodo: (id) => dispatch(removeTodos(id)),
-//     updateTodo: (obj) => dispatch(updateTodos(obj)),
-//     completeTodo: (id) => dispatch(completeTodos(id)),
-//   };
-// };
-
-
-
 const DisplayTodos = (props) => {
-  const dispatch = useDispatch();
-  const todoState = useSelector((state) => state.todos)
-  
-  
-  
-  
+  const todoState = useSelector((state) => state.todos);
+
   const [sort, setSort] = useState("active");
   return (
     <div className="displaytodos">
@@ -67,13 +38,7 @@ const DisplayTodos = (props) => {
             ? todoState?.map((item) => {
                 return (
                   item.completed === false && (
-                    <TodoItem
-                      key={item.id}
-                      item={item}
-                      removeTodo={props.removeTodo}
-                      updateTodo={props.updateTodo}
-                      completeTodo={props.completeTodo}
-                    />
+                    <TodoItem key={item.id} item={item} />
                   )
                 );
               })
@@ -83,13 +48,7 @@ const DisplayTodos = (props) => {
             ? todoState?.map((item) => {
                 return (
                   item.completed === true && (
-                    <TodoItem
-                      key={item.id}
-                      item={item}
-                      removeTodo={props.removeTodo}
-                      updateTodo={props.updateTodo}
-                      completeTodo={props.completeTodo}
-                    />
+                    <TodoItem key={item.id} item={item} />
                   )
                 );
               })
@@ -97,15 +56,7 @@ const DisplayTodos = (props) => {
           {/* for all items */}
           {todoState?.length > 0 && sort === "all"
             ? todoState?.map((item) => {
-                return (
-                  <TodoItem
-                    key={item.id}
-                    item={item}
-                    removeTodo={props.removeTodo}
-                    updateTodo={props.updateTodo}
-                    completeTodo={props.completeTodo}
-                  />
-                );
+                return <TodoItem key={item.id} item={item} />;
               })
             : null}
         </AnimatePresence>
@@ -114,5 +65,4 @@ const DisplayTodos = (props) => {
   );
 };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(DisplayTodos);
 export default DisplayTodos;

@@ -2,8 +2,7 @@ import { ADD_TODO, COMPLETE_TODO, DELETE_TODO, UPDATE_TODO } from "./constants";
 
 const intialState = {
   todos: [],
-  complete: false,
-  task: {}
+  // task: {}
 };
 
 const rootReducer = (state = intialState, action) => {
@@ -29,7 +28,7 @@ const rootReducer = (state = intialState, action) => {
       return {
         ...state,
         task: state.todos.map((todo) =>
-          todo.id === action.payload ? (todo.complete = true) : false
+          todo.id === action.payload ? (todo.completed = true) : false
         ),
       };
     default:

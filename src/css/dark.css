@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap");
 
 html {
   line-height: 1.15;
@@ -7,19 +8,19 @@ html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "roboto";
-} 
+  font-family: "RocknRoll One", sans-serif;
+}
 
- body {
- background-color: rgb(221, 221, 221);
- background-repeat: no-repeat; 
- background-size: cover; 
- background-attachment: fixed; 
- color: #222;
- overflow: hidden; 
- } 
+body {
+  background-color: rgb(37, 37, 37);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #222;
+  overflow: hidden;
+} */
 
-  .App { 
+ .App {
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
@@ -29,20 +30,20 @@ html {
   display: inline;
   text-align: center;
   margin-bottom: 2rem;
-  color: #111111;
-  text-shadow: 0 0 5px #0c0b1d
+  color: #e1ebfd;
+  text-shadow: 0 0 5px #0c0b1d, 3px -1px 5px #000000;
 }
 
 .addTodos {
   display: flex;
   justify-content: center;
-}
+} 
 
-.todo-input {
+ .todo-input {
   min-width: 15rem;
   width: 40vw;
   max-height: 2.5rem;
-  background-color: white;
+  background-color: #e1ebfd;
   border: none;
   border-radius: 5px;
   padding: 0.5rem 1rem;
@@ -50,26 +51,27 @@ html {
 }
 .todo-input:focus {
   outline: none;
-  border: 2px solid rgb(9, 9, 10);
-}
+  border: 2px solid rgb(5, 5, 8);
+} 
 
-.add-btn {
+ .add-btn {
   margin-left: 1rem;
-  background-color: #ececec;
-  color: #1c1d1f;
+  background-color: #000000;
+  color: #e1ebfd;
   border-radius: 50%;
-  border: 2px solid #1a1a1b;
+  border: 2px solid #e1ebfd;
   font-size: 1.5rem;
   width: 3.2rem;
   height: 3.2rem;
   cursor: pointer;
-  box-shadow: 1px 4px 10px #020205;
+  box-shadow: 1px 4px 10px #ffffff;
+
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} 
 
-.add-btn:focus {
+ .add-btn:focus {
   outline: none;
 }
 
@@ -84,19 +86,17 @@ html {
   margin-bottom: 2rem;
 }
 
-.displaytodos .buttons button {
+ .displaytodos .buttons button {
   padding: 0.5rem 1.2rem;
   border-radius: 20px;
   cursor: pointer;
   border: none;
-  background-color: #ececec;
-  color: #1c1d1f;
-  font-weight: 1000;
-  border: 2px solid #1a1a1b;
-  box-shadow: 1px 4px 10px #020205;
-}
+  background-color: #070606;
+  color: #fbfbfb;
+  box-shadow: 1px 4px 10px #ffffff;
+} 
 
-.displaytodos .buttons button:focus {
+ .displaytodos .buttons button:focus {
   outline: none;
 }
 
@@ -110,12 +110,18 @@ html {
   align-self: flex-start;
   flex-wrap: wrap;
   margin-left: 5%;
-}
+} */
 
-.card {
+ .card {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background: rgb(180, 182, 218);
+  background: radial-gradient(
+    circle,
+    hsla(240, 2%, 8%, 0.9) 0%,
+    hsla(0, 0%, 0%, 0.9) 100%
+  );
+
   margin: 0 1rem 1rem 0;
   height: 8rem;
   width: 18rem;
@@ -128,15 +134,14 @@ html {
   padding: 0.5rem;
   border-radius: 8px;
   border: none;
-  background-color: #fdfdfd;
-  font-weight: 1000;
-  color: #080808;
+  background-color: #131313;
+  color: #fbfbfb;
   height: 70%;
 }
 .card textarea:disabled {
   background-color: transparent;
-}
-
+} 
+ 
 .card .btns {
   position: absolute;
   bottom: 1rem;
@@ -161,9 +166,9 @@ html {
   position: absolute;
   right: 0.3rem;
   top: 0.3rem;
-  background-color: white;
+  background-color: #867bcd;
   border: 2px solid #272727;
-  color: black;
+  color: #e1ebfd;
   font-size: 0.8rem;
   padding: 0.3rem 1rem;
   border-radius: 20px;
@@ -184,5 +189,4 @@ html {
   .card {
     margin-right: 0;
   }
-} 
-
+}
